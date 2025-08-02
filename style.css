@@ -1,0 +1,248 @@
+/* General Styling & Variables */
+:root {
+  --primary-color: #007bff;
+  --background-color: #f4f7f6;
+  --card-background: rgba(255, 255, 255, 0.7);
+  --text-color: #333;
+  --inactive-color: #ccc;
+  --today-color: #e6e6e6;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=2910&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  overflow: hidden;
+}
+
+/* App Wrapper */
+.calendar-app-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 95%;
+  max-width: 700px;
+  height: 95vh;
+  background: var(--card-background);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Main Heading */
+.main-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Calendar Container */
+.calendar-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Header Section */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--inactive-color);
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+  padding: 5px;
+}
+
+.nav-btn:hover {
+  color: var(--primary-color);
+}
+
+.header-details h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.header-details p {
+  font-size: 1rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+#current-time {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* Body Section */
+.calendar-body {
+  padding-top: 20px;
+  flex-grow: 1;
+}
+
+.calendar-weekdays,
+.calendar-dates {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  text-align: center;
+}
+
+.calendar-weekdays li {
+  font-weight: 600;
+  color: var(--primary-color);
+  font-size: 0.9rem;
+}
+
+.calendar-dates li {
+  padding: 10px 0;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.calendar-dates li:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.calendar-dates .inactive {
+  color: var(--inactive-color);
+  cursor: default;
+  background: none;
+  opacity: 0.6;
+}
+
+.calendar-dates .inactive:hover {
+  background: none;
+  color: var(--inactive-color);
+  transform: none;
+}
+
+.calendar-dates .today {
+  background-color: var(--today-color);
+  font-weight: 600;
+  border: 2px solid var(--primary-color);
+  color: var(--text-color);
+}
+
+/* Year Selector */
+.year-selector {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#year-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-left: 10px;
+  font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Footer */
+.app-footer {
+  width: 100%;
+  padding-top: 15px;
+  border-top: 1px solid var(--inactive-color);
+  font-weight: 700;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+/* --- Media Queries for small screens --- */
+@media (max-width: 600px) {
+  .calendar-app-wrapper {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    padding: 10px;
+  }
+
+  .main-heading {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+  }
+
+  .calendar-header {
+    padding-bottom: 10px;
+  }
+
+  .header-details h2 {
+    font-size: 1.5rem;
+  }
+
+  .header-details p,
+  #current-time {
+    font-size: 0.9rem;
+  }
+
+  .nav-btn {
+    font-size: 1.2rem;
+  }
+
+  .calendar-weekdays li,
+  .calendar-dates li {
+    font-size: 0.8rem;
+    padding: 8px 0;
+  }
+
+  .calendar-body {
+    padding-top: 10px;
+  }
+
+  .app-footer {
+    padding-top: 10px;
+    font-size: 1rem;
+  }
+
+  .year-selector {
+    margin-top: 15px;
+  }
+
+  #year-select {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+}
